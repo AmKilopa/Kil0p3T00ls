@@ -13,7 +13,7 @@ $e={
 ls:document.getElementById('passwordLength'),
 lv:document.getElementById('lengthValue'),
 gb:document.getElementById('generatePasswordBtn'),
-cb:document.getElementById('copyPasswordBtn'),
+cpb:document.getElementById('copyPasswordBtn'),
 pf:document.getElementById('generatedPassword'),
 cb:{
 u:document.getElementById('includeUppercase'),
@@ -44,7 +44,7 @@ if($e.pf.value)$gp();
 });
 
 $e.gb.onclick=$gp;
-$e.cb.onclick=$cpp;
+$e.cpb.onclick=$cpp;
 }
 
 function $gp(){
@@ -183,15 +183,22 @@ return;
 try{
 if(navigator.clipboard&&window.isSecureContext){
 await navigator.clipboard.writeText(p);
+$n('Пароль скопирован в буфер обмена','success');
 }else{
 $e.pf.select();
-document.execCommand('copy');
+$e.pf.setSelectionRange(0, 99999);
+const successful = document.execCommand('copy');
 window.getSelection().removeAllRanges();
+
+if(successful) {
+$n('Пароль скопирован в буфер обмена','success');
+} else {
+throw new Error('Copy command failed');
+}
 }
 
-$n('Пароль скопирован в буфер обмена','success');
-
 }catch(e){
+console.error('Copy failed:', e);
 $n('Ошибка при копировании пароля','error');
 }}
 
