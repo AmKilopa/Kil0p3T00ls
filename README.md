@@ -29,6 +29,7 @@
 
 2. Клонируйте репозиторий в эту папку:
 ```bash
+cd Kil0p3T00ls
 git clone https://github.com/AmKilopa/Kil0p3T00ls
 ```
 
