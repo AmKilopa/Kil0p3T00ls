@@ -14,6 +14,9 @@
 "host_permissions":[
 "<all_urls>"
 ],
+"content_security_policy": {
+"extension_pages": "script-src 'self'; object-src 'self';"
+},
 "action":{
 "default_popup":"popup.html",
 "default_title":"Kil0p3T00ls - Инструменты разработчика",

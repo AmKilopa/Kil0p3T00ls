@@ -1,4 +1,4 @@
-import{$cc}from'./config.js';
+import{$corsConfig}from'./config.js';
 import{$storage}from'../../core/storage.js';
 import{$n}from'../../core/utils.js';
 
@@ -44,27 +44,20 @@ const tx=document.getElementById('corsToggleText');
 const si=document.getElementById('corsStatusInfo');
 const ar=document.getElementById('activeRules');
 
-if($a){
-i.className='status-indicator active';
-s.textContent='CORS отключён';
-ic.textContent='🔓';
-tx.textContent='Включить CORS';
-b.style.background='linear-gradient(135deg, #dc2626, #991b1b)';
-si.textContent='Отключён';
-ar.textContent='1';
-}else{
-i.className='status-indicator inactive';
-s.textContent='CORS защита активна';
-ic.textContent='🛡️';
-tx.textContent='Отключить CORS';
-b.style.background='linear-gradient(135deg, #2a2a2a, #1a1a1a)';
-si.textContent='Защищён';
-ar.textContent='0';
-}}
+const status=$a?$corsConfig.$status.active:$corsConfig.$status.inactive;
+
+i.className=`status-indicator ${status.indicator}`;
+s.textContent=status.text;
+ic.textContent=status.icon;
+tx.textContent=status.buttonText;
+b.style.background=status.buttonStyle;
+si.textContent=status.info;
+ar.textContent=status.rules;
+}
 
 async function $tc(){
 if(!$t){
-$n('Не удалось получить информацию о вкладке','error');
+$n($corsConfig.$messages.tabError,'error');
 return;
 }
 $a=!$a;
@@ -75,9 +68,9 @@ action:$a?'enable-cors':'disable-cors',
 tabId:$t.id
 });
 $ui();
-$n($a?'CORS отключён для этой вкладки':'CORS защита восстановлена','success');
+$n($a?$corsConfig.$messages.enabled:$corsConfig.$messages.disabled,'success');
 }catch(e){
-$n('Ошибка при изменении настроек CORS','error');
+$n($corsConfig.$messages.error,'error');
 $a=!$a;
 }}
 

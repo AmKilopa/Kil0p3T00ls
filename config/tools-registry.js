@@ -25,13 +25,13 @@ author:'Kil0p3',
 permissions:[]
 },
 {
-id:'qr-generator',
-title:'QR код генератор',
-description:'Создание QR кодов для текста и ссылок',
-icon:'📱',
-status:'coming-soon',
-category:'generators',
-folder:'QrGenerator',
+id:'keyboard-layout-fix',
+title:'Исправление раскладки',
+description:'Конвертация текста между русской и английской раскладкой',
+icon:'⌨️',
+status:'ready',
+category:'text-tools',
+folder:'KeyboardLayoutFix',
 version:'1.0.0',
 author:'Kil0p3',
 permissions:[]
@@ -43,7 +43,22 @@ description:'Исправление ошибок в тексте',
 icon:'✍️',
 status:'beta',
 category:'text-tools',
-folder:'SpellChecker'
+folder:'SpellChecker',
+version:'1.0.0',
+author:'Kil0p3',
+permissions:[]
+},
+{
+id:'qr-generator',
+title:'QR код генератор',
+description:'Создание QR кодов для текста и ссылок',
+icon:'📱',
+status:'coming-soon',
+category:'generators',
+folder:'QrGenerator',
+version:'1.0.0',
+author:'Kil0p3',
+permissions:[]
 }
 ];
 

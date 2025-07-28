@@ -1,0 +1,48 @@
+.layout-controls{margin-bottom:20px;}
+.mode-selector{display:flex;gap:8px;margin-bottom:16px;}
+.mode-btn{flex:1;background:linear-gradient(135deg,#2a2a2a,#1a1a1a);border:1px solid #444;color:#ccc;padding:12px 8px;border-radius:8px;cursor:pointer;font-size:12px;font-weight:500;transition:all 0.2s ease;display:flex;flex-direction:column;align-items:center;gap:6px;font-family:inherit;}
+.mode-btn:hover{background:linear-gradient(135deg,#333,#222);border-color:#555;color:#fff;transform:translateY(-1px);}
+.mode-btn.active{background:linear-gradient(135deg,#22c55e,#16a34a);border-color:#22c55e;color:#fff;box-shadow:0 4px 12px rgba(34,197,94,0.3);}
+.mode-icon{font-size:16px;line-height:1;}
+.mode-text{font-size:11px;font-weight:600;}
+.text-container{background:#1a1a1a;border:1px solid #333;border-radius:8px;padding:16px;margin-bottom:16px;}
+.text-area{width:100%;min-height:120px;background:#0f0f0f;border:1px solid #333;color:#fff;padding:12px;border-radius:6px;font-size:13px;font-family:'Courier New',monospace;line-height:1.5;resize:vertical;transition:all 0.2s ease;}
+.text-area:focus{border-color:#22c55e;outline:none;background:#1a1a1a;box-shadow:0 0 0 2px rgba(34,197,94,0.1);}
+.text-area::placeholder{color:#666;font-style:italic;}
+.text-area[readonly]{background:#151515;color:#ccc;cursor:default;}
+.text-footer{display:flex;justify-content:space-between;align-items:center;margin-top:12px;}
+.char-count{font-size:11px;color:#888;font-weight:500;}
+.text-actions{display:flex;gap:6px;}
+.action-btn{width:36px;height:36px;background:linear-gradient(135deg,#2a2a2a,#1a1a1a);border:1px solid #444;color:#fff;border-radius:6px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:14px;transition:all 0.2s ease;}
+.action-btn:hover{background:linear-gradient(135deg,#333,#222);border-color:#555;transform:translateY(-1px);}
+.action-btn:active{transform:translateY(0) scale(0.95);}
+.convert-section{display:flex;justify-content:center;margin:24px 0;}
+.convert-btn{background:linear-gradient(135deg,#22c55e,#16a34a);border:1px solid #22c55e;color:#fff;padding:14px 32px;border-radius:8px;cursor:pointer;font-size:14px;font-weight:600;display:flex;align-items:center;gap:8px;transition:all 0.2s ease;box-shadow:0 4px 12px rgba(34,197,94,0.3);font-family:inherit;}
+.convert-btn:hover{background:linear-gradient(135deg,#16a34a,#15803d);transform:translateY(-2px);box-shadow:0 6px 20px rgba(34,197,94,0.4);}
+.convert-btn:active{transform:translateY(0);}
+.convert-btn.processing{opacity:0.7;cursor:not-allowed;pointer-events:none;}
+.convert-icon{font-size:16px;}
+.stats-grid{display:grid;gap:12px;}
+.stat-item{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid #2a2a2a;}
+.stat-item:last-child{border-bottom:none;}
+.stat-label{font-size:12px;color:#888;}
+.stat-value{font-size:12px;color:#fff;font-weight:600;}
+.examples-list{display:flex;flex-direction:column;gap:12px;}
+.example-card{background:rgba(0,0,0,0.3);border:1px solid #333;border-radius:6px;padding:12px;display:flex;align-items:center;gap:12px;transition:all 0.2s ease;}
+.example-card:hover{background:rgba(0,0,0,0.5);border-color:#444;}
+.example-from{flex:1;font-family:'Courier New',monospace;font-size:12px;color:#f97316;background:rgba(249,115,22,0.1);padding:6px 8px;border-radius:4px;}
+.example-arrow{color:#666;font-weight:bold;font-size:14px;}
+.example-to{flex:1;font-family:'Courier New',monospace;font-size:12px;color:#22c55e;background:rgba(34,197,94,0.1);padding:6px 8px;border-radius:4px;}
+.success-flash{animation:successFlash 0.5s ease-out;}
+@keyframes successFlash{0%{background:rgba(34,197,94,0.2);border-color:#22c55e;}100%{background:inherit;border-color:inherit;}}
+.error-flash{animation:errorFlash 0.5s ease-out;}
+@keyframes errorFlash{0%{background:rgba(239,68,68,0.2);border-color:#ef4444;}100%{background:inherit;border-color:inherit;}}
+@media (max-width:400px){
+.mode-btn{padding:10px 6px;font-size:11px;}
+.mode-icon{font-size:14px;}
+.mode-text{font-size:10px;}
+.text-area{min-height:100px;font-size:12px;}
+.convert-btn{padding:12px 24px;font-size:13px;}
+.example-card{flex-direction:column;align-items:stretch;gap:8px;}
+.example-arrow{text-align:center;}
+}

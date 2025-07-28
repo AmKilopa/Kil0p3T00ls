@@ -1,0 +1,71 @@
+<div class="tool-section">
+<div class="section-title">
+<span>⌨️</span>Исправление раскладки</div>
+<div class="layout-controls">
+<div class="mode-selector">
+<button class="mode-btn active" id="autoMode" data-mode="auto">
+<span class="mode-icon">🔄</span>
+<span class="mode-text">Авто</span></button>
+<button class="mode-btn" id="ruToEnMode" data-mode="ru-en">
+<span class="mode-icon">🇷🇺</span>
+<span class="mode-text">РУ → EN</span></button>
+<button class="mode-btn" id="enToRuMode" data-mode="en-ru">
+<span class="mode-icon">🇺🇸</span>
+<span class="mode-text">EN → РУ</span></button></div></div></div>
+<div class="tool-section">
+<div class="section-title">
+<span>📝</span>Исходный текст</div>
+<div class="text-container">
+<textarea class="text-area" id="inputText" placeholder="Введите текст с неправильной раскладкой...&#10;&#10;Пример: ghbdtn rfr ltkf& xnj ltkftim&"></textarea>
+<div class="text-footer">
+<span class="char-count" id="inputCount">0 символов</span>
+<div class="text-actions">
+<button class="action-btn" id="clearInputBtn" title="Очистить">
+<span>🗑️</span></button>
+<button class="action-btn" id="pasteBtn" title="Вставить">
+<span>📋</span></button></div></div></div></div>
+<div class="convert-section">
+<button class="convert-btn" id="convertBtn">
+<span class="convert-icon">⚡</span>
+<span class="convert-text" id="convertText">Исправить раскладку</span></button></div>
+<div class="tool-section">
+<div class="section-title">
+<span>✅</span>Исправленный текст</div>
+<div class="text-container">
+<textarea class="text-area" id="outputText" readonly placeholder="Исправленный текст появится здесь..."></textarea>
+<div class="text-footer">
+<span class="char-count" id="outputCount">0 символов</span>
+<div class="text-actions">
+<button class="action-btn" id="copyBtn" title="Копировать">
+<span>📋</span></button>
+<button class="action-btn" id="swapBtn" title="Заменить исходный">
+<span>🔄</span></button></div></div></div></div>
+<div class="tool-section">
+<div class="section-title">
+<span>📊</span>Статистика</div>
+<div class="stats-grid">
+<div class="stat-item">
+<div class="stat-label">Режим:</div>
+<div class="stat-value" id="currentMode">Автоопределение</div></div>
+<div class="stat-item">
+<div class="stat-label">Обработано:</div>
+<div class="stat-value" id="processedCount">0 символов</div></div>
+<div class="stat-item">
+<div class="stat-label">Определена раскладка:</div>
+<div class="stat-value" id="detectedLayout">-</div></div></div></div>
+<div class="tool-section">
+<div class="section-title">
+<span>💡</span>Примеры</div>
+<div class="examples-list">
+<div class="example-card">
+<div class="example-from">ghbdtn rfr ltkf&</div>
+<div class="example-arrow">→</div>
+<div class="example-to">привет как дела?</div></div>
+<div class="example-card">
+<div class="example-from">руддщ цщкдв</div>
+<div class="example-arrow">→</div>
+<div class="example-to">hello world</div></div>
+<div class="example-card">
+<div class="example-from">rfr ljkuj yt dbltkbcm&</div>
+<div class="example-arrow">→</div>
+<div class="example-to">как долго не виделись?</div></div></div></div>

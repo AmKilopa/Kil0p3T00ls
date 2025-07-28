@@ -1,4 +1,4 @@
-import{$tc}from'./config.js';
+import{$passwordConfig}from'./config.js';
 import{$storage}from'../../core/storage.js';
 import{$n}from'../../core/utils.js';
 
@@ -66,7 +66,7 @@ ea:$e.cb.ea.checked
 
 if(!o.u&&!o.lw&&!o.n&&!o.s){
 $e.pf.value='';
-$e.st.textContent='Выберите хотя бы один тип символов';
+$e.st.textContent=$passwordConfig.$messages.noTypes;
 $e.sf.style.width='0%';
 $ups({entropy:0,combinations:0,secondsToBreak:0});
 return;
@@ -83,17 +83,17 @@ $upss(a);
 function $cp(o){
 let cs='';
 
-if(o.u)cs+=$tc.$cs.uppercase;
-if(o.lw)cs+=$tc.$cs.lowercase;
-if(o.n)cs+=$tc.$cs.numbers;
-if(o.s)cs+=$tc.$cs.symbols;
+if(o.u)cs+=$passwordConfig.$cs.uppercase;
+if(o.lw)cs+=$passwordConfig.$cs.lowercase;
+if(o.n)cs+=$passwordConfig.$cs.numbers;
+if(o.s)cs+=$passwordConfig.$cs.symbols;
 
 if(o.es){
-cs=cs.split('').filter(c=>!$tc.$cs.similar.includes(c)).join('');
+cs=cs.split('').filter(c=>!$passwordConfig.$cs.similar.includes(c)).join('');
 }
 
 if(o.ea){
-cs=cs.split('').filter(c=>!$tc.$cs.ambiguous.includes(c)).join('');
+cs=cs.split('').filter(c=>!$passwordConfig.$cs.ambiguous.includes(c)).join('');
 }
 
 let p='';
@@ -108,17 +108,17 @@ return p;
 function $ap(p,o){
 let css=0;
 
-if(o.u)css+=$tc.$cs.uppercase.length;
-if(o.lw)css+=$tc.$cs.lowercase.length;
-if(o.n)css+=$tc.$cs.numbers.length;
-if(o.s)css+=$tc.$cs.symbols.length;
+if(o.u)css+=$passwordConfig.$cs.uppercase.length;
+if(o.lw)css+=$passwordConfig.$cs.lowercase.length;
+if(o.n)css+=$passwordConfig.$cs.numbers.length;
+if(o.s)css+=$passwordConfig.$cs.symbols.length;
 
-if(o.es)css-=$tc.$cs.similar.length;
-if(o.ea)css-=$tc.$cs.ambiguous.length;
+if(o.es)css-=$passwordConfig.$cs.similar.length;
+if(o.ea)css-=$passwordConfig.$cs.ambiguous.length;
 
 const e=p.length*Math.log2(css);
 const cb=Math.pow(css,p.length);
-const stb=cb/(2*$tc.$s.$bfs);
+const stb=cb/(2*$passwordConfig.$s.$bfs);
 
 return{
 entropy:e,
@@ -129,7 +129,7 @@ strength:$gps(e)
 }
 
 function $gps(e){
-for(const[l,cf]of Object.entries($tc.$s.$el)){
+for(const[l,cf]of Object.entries($passwordConfig.$s.$el)){
 if(e>=cf.min&&e<cf.max){
 return{
 level:l,
@@ -138,7 +138,7 @@ color:cf.color
 };
 }
 }
-return $tc.$s.$el.veryStrong;
+return $passwordConfig.$s.$el.veryStrong;
 }
 
 function $ups(a){
@@ -181,14 +181,14 @@ async function $cpp(){
 const p=$e.pf.value;
 
 if(!p){
-$n('Сначала сгенерируйте пароль','warning');
+$n($passwordConfig.$messages.generate,'warning');
 return;
 }
 
 try{
 if(navigator.clipboard&&window.isSecureContext){
 await navigator.clipboard.writeText(p);
-$n('Пароль скопирован в буфер обмена','success');
+$n($passwordConfig.$messages.copied,'success');
 }else{
 $e.pf.select();
 $e.pf.setSelectionRange(0, 99999);
@@ -196,7 +196,7 @@ const successful = document.execCommand('copy');
 window.getSelection().removeAllRanges();
 
 if(successful) {
-$n('Пароль скопирован в буфер обмена','success');
+$n($passwordConfig.$messages.copied,'success');
 } else {
 throw new Error('Copy command failed');
 }
@@ -204,7 +204,7 @@ throw new Error('Copy command failed');
 
 }catch(e){
 console.error('Copy failed:', e);
-$n('Ошибка при копировании пароля','error');
+$n($passwordConfig.$messages.copyError,'error');
 }}
 
 function $go(){
@@ -220,15 +220,15 @@ excludeAmbiguous:$e.cb.ea.checked
 }
 
 function $so(o){
-$e.ls.value=o.length||12;
+$e.ls.value=o.length||$passwordConfig.$d.length;
 $e.lv.textContent=$e.ls.value;
 
-$e.cb.u.checked=o.uppercase??true;
-$e.cb.lw.checked=o.lowercase??true;
-$e.cb.n.checked=o.numbers??true;
-$e.cb.s.checked=o.symbols??true;
-$e.cb.es.checked=o.excludeSimilar??false;
-$e.cb.ea.checked=o.excludeAmbiguous??false;
+$e.cb.u.checked=o.uppercase??$passwordConfig.$d.includeUppercase;
+$e.cb.lw.checked=o.lowercase??$passwordConfig.$d.includeLowercase;
+$e.cb.n.checked=o.numbers??$passwordConfig.$d.includeNumbers;
+$e.cb.s.checked=o.symbols??$passwordConfig.$d.includeSymbols;
+$e.cb.es.checked=o.excludeSimilar??$passwordConfig.$d.excludeSimilar;
+$e.cb.ea.checked=o.excludeAmbiguous??$passwordConfig.$d.excludeAmbiguous;
 }
 
 async function $ss(){
@@ -236,7 +236,7 @@ await $storage.$ss('password-generator',$go());
 }
 
 async function $ls(){
-const s=await $storage.$gs('password-generator',$tc.$d);
+const s=await $storage.$gs('password-generator',$passwordConfig.$d);
 $so(s);
 }
 
