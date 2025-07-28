@@ -1,0 +1,25 @@
+<div class="tool-section">
+<div class="section-title">
+<span>✍️</span>Проверка орфографии</div>
+<div class="spell-input-section">
+<div class="input-display">
+<label for="originalText">Текст:</label>
+<textarea id="originalText" class="spell-field" 
+placeholder="Введите текст..." rows="6"></textarea></div>
+<div class="spell-controls">
+<button class="primary-button" id="checkBtn">
+<span class="button-icon">🔍</span>Проверить</button></div>
+<div class="spell-results" id="results" style="display: none;">
+<div class="results-header">
+<h4 id="resultTitle">Результат:</h4>
+<span class="error-count" id="errorCount">0</span></div>
+<div class="errors-list" id="errorsList"></div></div>
+<div class="input-display" id="correctedSection" style="display: none;">
+<label for="correctedText">Исправлено:</label>
+<textarea id="correctedText" class="spell-field" 
+rows="6" readonly></textarea></div>
+<div class="spell-actions" id="actions" style="display: none;">
+<button class="secondary-button" id="copyBtn">📋 Копировать</button>
+<button class="secondary-button" id="replaceBtn">🔄 Заменить</button>
+<button class="secondary-button" id="clearBtn">🗑️ Очистить</button>
+</div></div></div>
