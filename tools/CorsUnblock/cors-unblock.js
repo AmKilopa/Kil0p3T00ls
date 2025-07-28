@@ -1,4 +1,6 @@
 import{$cc}from'./config.js';
+import{$storage}from'../../core/storage.js';
+import{$n}from'../../core/utils.js';
 
 let $a=false,$t=null;
 
@@ -25,19 +27,12 @@ document.getElementById('tabInfo').textContent='Недоступно';
 
 async function $ls(){
 if($t){
-try{
-const r=await chrome.storage.local.get([`cors_${$t.id}`]);
-$a=r[`cors_${$t.id}`]||false;
-}catch(e){
-$a=false;
-}
+$a=await $storage.$g(`cors_${$t.id}`,false,'chrome');
 }}
 
 async function $ss(){
 if($t){
-try{
-await chrome.storage.local.set({[`cors_${$t.id}`]:$a});
-}catch(e){}
+await $storage.$s(`cors_${$t.id}`,$a,'chrome');
 }}
 
 function $ui(){
@@ -90,12 +85,5 @@ function $se(){
 const b=document.getElementById('corsToggleBtn');
 if(b)b.onclick=$tc;
 }
-
-function $n(m,t='info'){
-if(window.showNotification){
-window.showNotification(m,t);
-}else{
-console.log(`[${t.toUpperCase()}] ${m}`);
-}}
 
 export{$tc as toggleCors,$ui as updateUI,$gt as getCurrentTab,$ls as loadState,$ss as saveState};

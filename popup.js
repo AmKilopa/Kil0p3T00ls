@@ -1,7 +1,9 @@
+import{$navigation}from'./core/navigation.js';
+import{$storage}from'./core/storage.js';
+import{$n}from'./core/utils.js';
+
 class $k{
 constructor(){
-this.$cv='menu';
-this.$ct=null;
 this.$t=[];
 this.init();
 }
@@ -47,16 +49,15 @@ return sm[s]||s;
 
 async $ot(t){
 if(t.status==='coming-soon'){
-this.$sn('Этот инструмент пока не готов');
+$n('Этот инструмент пока не готов');
 return;
 }
 this.$sl();
-this.$ct=t;
 document.getElementById('toolIconHeader').textContent=t.icon;
 document.getElementById('toolNameHeader').textContent=t.title;
 setTimeout(async()=>{
 await this.$ltc(t);
-this.$sv('tool');
+$navigation.$sv('tool',t);
 this.$hl();
 },300);
 }
@@ -109,16 +110,9 @@ return`<div class="tool-section"><div style="text-align:center;padding:40px 20px
 <span class="button-icon">🔄</span>Перезагрузить</button></div></div>`;
 }
 
-$sv(vn){
-document.getElementById('menuView').classList.toggle('hidden',vn!=='menu');
-document.getElementById('toolView').classList.toggle('hidden',vn!=='tool');
-this.$cv=vn;
-}
-
 $se(){
 document.getElementById('backButton').onclick=()=>{
-this.$sv('menu');
-this.$ct=null;
+$navigation.$gb();
 };
 }
 
@@ -129,16 +123,6 @@ document.getElementById('loadingOverlay').classList.remove('hidden');
 $hl(){
 document.getElementById('loadingOverlay').classList.add('hidden');
 }
-
-$sn(m,t='info'){
-const n=document.getElementById('notification');
-const nt=document.getElementById('notificationText');
-nt.textContent=m;
-n.className=`notification show notification-${t}`;
-setTimeout(()=>{
-n.classList.remove('show');
-setTimeout(()=>n.classList.add('hidden'),300);
-},2500);
-}}
+}
 
 new $k();

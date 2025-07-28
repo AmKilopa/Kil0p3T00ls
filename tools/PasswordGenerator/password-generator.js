@@ -1,10 +1,13 @@
 import{$tc}from'./config.js';
+import{$storage}from'../../core/storage.js';
+import{$n}from'../../core/utils.js';
 
 let $e={};
 
 export async function init(){
 $ie();
 $se();
+await $ls();
 $gp();
 }
 
@@ -32,14 +35,16 @@ cv:document.getElementById('combinationsValue')
 }
 
 function $se(){
-$e.ls.addEventListener('input',()=>{
+$e.ls.addEventListener('input',async()=>{
 $e.lv.textContent=$e.ls.value;
 if($e.pf.value)$gp();
+await $ss();
 });
 
 Object.values($e.cb).forEach(c=>{
-c.addEventListener('change',()=>{
+c.addEventListener('change',async()=>{
 if($e.pf.value)$gp();
+await $ss();
 });
 });
 
@@ -202,13 +207,6 @@ console.error('Copy failed:', e);
 $n('Ошибка при копировании пароля','error');
 }}
 
-function $n(m,t='info'){
-if(window.showNotification){
-window.showNotification(m,t);
-}else{
-console.log(`[${t.toUpperCase()}] ${m}`);
-}}
-
 function $go(){
 return{
 length:parseInt($e.ls.value),
@@ -233,21 +231,13 @@ $e.cb.es.checked=o.excludeSimilar??false;
 $e.cb.ea.checked=o.excludeAmbiguous??false;
 }
 
-function $ss(){
-try{
-const o=$go();
-localStorage.setItem('passwordGeneratorSettings',JSON.stringify(o));
-}catch(e){}}
-
-function $ls(){
-try{
-const s=localStorage.getItem('passwordGeneratorSettings');
-if(s){
-const o=JSON.parse(s);
-$so(o);
+async function $ss(){
+await $storage.$ss('password-generator',$go());
 }
-}catch(e){
-$so($tc.$d);
-}}
+
+async function $ls(){
+const s=await $storage.$gs('password-generator',$tc.$d);
+$so(s);
+}
 
 export{$gp as generatePassword,$cpp as copyPassword,$go as getPasswordOptions,$so as setPasswordOptions,$ap as analyzePassword,$cp as createPassword};

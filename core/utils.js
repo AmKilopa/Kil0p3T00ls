@@ -14,6 +14,8 @@ setTimeout(()=>n.parentNode&&n.parentNode.removeChild(n),300);
 },d);
 }
 
+window.showNotification=$n;
+
 export async function $cp(t){
 try{
 if(navigator.clipboard&&window.isSecureContext){
