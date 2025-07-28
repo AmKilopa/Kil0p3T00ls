@@ -75,7 +75,7 @@ git clone https://github.com/AmKilopa/Kil0p3T00ls
 ## 🔧 Системные требования
 
 - Chrome 88+
-- Разрешения: activeTab, storage, declarativeNetRequest, downloads, tabs
+- Разрешения: activeTab, storage, declarativeNetRequest, tabs, clipboardWrite
 
 ## ⚠️ Важно
 
