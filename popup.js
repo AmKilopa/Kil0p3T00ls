@@ -224,12 +224,33 @@ return;
 this.$sl();
 document.getElementById('toolIconHeader').textContent=t.icon;
 document.getElementById('toolNameHeader').textContent=t.title;
+
+const favBtn=document.getElementById('toolFavoriteBtn');
+if(favBtn){
+const isFav=$navigation.$if(t.id);
+favBtn.textContent=isFav?'⭐':'☆';
+favBtn.title=isFav?'Удалить из избранного':'Добавить в избранное';
+}
+
 setTimeout(async()=>{
 await this.$ltc(t);
 await $navigation.$sv('tool',t,'slideLeft');
 this.$hl();
 },300);
 }
+
+$tf(){
+const ct=$navigation.$gct();
+if(ct){
+const isFav=$navigation.$if(ct.id);
+$navigation.$sf(ct.id);
+const favBtn=document.getElementById('toolFavoriteBtn');
+if(favBtn){
+favBtn.textContent=!isFav?'⭐':'☆';
+favBtn.title=!isFav?'Удалить из избранного':'Добавить в избранное';
+}
+$n(`${ct.title} ${!isFav?'добавлен в':'удален из'} избранного`,!isFav?'success':'info');
+}}
 
 async $ltc(t){
 const c=document.getElementById('toolContent');
@@ -301,6 +322,11 @@ settings.onclick=()=>this.$ss();
 const clear=document.getElementById('clearDataBtn');
 if(clear){
 clear.onclick=()=>this.$cd();
+}
+
+const toolFav=document.getElementById('toolFavoriteBtn');
+if(toolFav){
+toolFav.onclick=()=>this.$tf();
 }
 }
 

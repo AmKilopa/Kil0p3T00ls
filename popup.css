@@ -10,6 +10,11 @@
 .\$ux{background:none;border:none;color:rgba(255,255,255,0.8);cursor:pointer;font-size:16px;padding:4px;border-radius:4px;transition:all 0.2s ease;line-height:1;}
 .\$ux:hover{color:#fff;background:rgba(255,255,255,0.1);}
 .app-container:has(.\$un:not(.hidden)) .view{padding-top:52px;}
+.toast-notification{position:fixed;background:#1a1a1a;border:1px solid #333;color:#fff;padding:12px 20px;border-radius:8px;font-size:12px;font-weight:500;z-index:10000;display:flex;align-items:center;gap:8px;max-width:400px;}
+.toast-success{background:#059669;border-color:#10b981;}
+.toast-error{background:#dc2626;border-color:#ef4444;}
+.toast-warning{background:#d97706;border-color:#f59e0b;}
+.toast-info{background:#1a1a1a;border-color:#333;}
 .hidden{display:none!important;}
 *{margin:0;padding:0;box-sizing:border-box;}
 body{width:400px;height:600px;background:#0f0f0f;color:#fff;font-family:'SF Pro Display',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;overflow:hidden;}
