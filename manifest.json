@@ -1,7 +1,7 @@
 {
 "manifest_version":3,
 "name":"Kil0p3T00ls",
-"version":"1.0.0",
+"version":"1.0.5",
 "description":"Многофункциональный набор инструментов для разработчиков и пользователей",
 "author":"Kil0p3",
 "permissions":[
@@ -15,7 +15,7 @@
 "<all_urls>"
 ],
 "content_security_policy": {
-"extension_pages": "script-src 'self'; object-src 'self';"
+"extension_pages": "script-src 'self'; object-src 'self'; style-src 'self' 'unsafe-inline';"
 },
 "action":{
 "default_popup":"popup.html",
