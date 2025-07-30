@@ -313,7 +313,7 @@ try{
 const data=await this.$ga('chrome');
 const localData=await this.$ga('local');
 const exportData={
-version:'1.0.5',
+version:'1.0.6',
 timestamp:Date.now(),
 chrome:data,
 local:localData,

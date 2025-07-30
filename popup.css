@@ -1,3 +1,15 @@
+.\$un{position:absolute;top:0;left:0;right:0;background:linear-gradient(135deg,#22c55e,#16a34a);border-bottom:1px solid #15803d;z-index:1001;padding:12px 16px;}
+.\$uc{display:flex;align-items:center;gap:12px;}
+.\$ui{font-size:16px;filter:drop-shadow(0 0 4px rgba(255,255,255,0.3));}
+.\$ut{flex:1;}
+.\$utt{font-size:12px;font-weight:600;color:#fff;margin-bottom:2px;}
+.\$uv{font-size:10px;color:#dcfce7;}
+.\$ua{display:flex;align-items:center;gap:6px;}
+.\$ub{background:rgba(255,255,255,0.2);border:1px solid rgba(255,255,255,0.3);color:#fff;padding:6px 12px;border-radius:6px;cursor:pointer;font-size:10px;font-weight:500;transition:all 0.2s ease;font-family:inherit;}
+.\$ub:hover{background:rgba(255,255,255,0.3);transform:translateY(-1px);}
+.\$ux{background:none;border:none;color:rgba(255,255,255,0.8);cursor:pointer;font-size:16px;padding:4px;border-radius:4px;transition:all 0.2s ease;line-height:1;}
+.\$ux:hover{color:#fff;background:rgba(255,255,255,0.1);}
+.app-container:has(.\$un:not(.hidden)) .view{padding-top:52px;}
 .hidden{display:none!important;}
 *{margin:0;padding:0;box-sizing:border-box;}
 body{width:400px;height:600px;background:#0f0f0f;color:#fff;font-family:'SF Pro Display',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;overflow:hidden;}
@@ -101,6 +113,8 @@ body{width:400px;height:600px;background:#0f0f0f;color:#fff;font-family:'SF Pro 
 .tool-card:nth-child(4){animation-delay:0.25s;}
 .tool-card:nth-child(5){animation-delay:0.3s;}
 @keyframes slideInUp{to{opacity:1;transform:translateY(0);}}
+@keyframes slideDown{from{transform:translateY(-100%);opacity:0;}to{transform:translateY(0);opacity:1;}}
+@keyframes slideUp{from{transform:translateY(0);opacity:1;}to{transform:translateY(-100%);opacity:0;}}
 .tool-section{background:#1a1a1a;border:1px solid #333;border-radius:8px;padding:20px;margin-bottom:16px;}
 .section-title{font-size:14px;font-weight:600;color:#fff;margin-bottom:16px;display:flex;align-items:center;gap:8px;}
 .primary-button,.secondary-button{background:linear-gradient(135deg,#2a2a2a,#1a1a1a);border:1px solid #444;color:#fff;padding:10px 16px;border-radius:8px;cursor:pointer;font-size:12px;font-weight:500;transition:all 0.2s ease;display:inline-flex;align-items:center;gap:6px;font-family:inherit;}
@@ -111,4 +125,3 @@ body{width:400px;height:600px;background:#0f0f0f;color:#fff;font-family:'SF Pro 
 .input-group label{display:block;font-size:12px;color:#ccc;margin-bottom:6px;}
 .input-group input,.input-group textarea,.input-group select{width:100%;background:#0f0f0f;border:1px solid #333;color:#fff;padding:10px;border-radius:6px;font-size:12px;font-family:inherit;transition:border-color 0.2s ease;}
 .input-group input:focus,.input-group textarea:focus,.input-group select:focus{outline:none;border-color:#555;background:#1a1a1a;}
-.hidden{display:none!important;}

@@ -11,6 +11,7 @@ this.init();
 
 async init(){
 await this.$lt();
+await this.$cu();
 this.$rm();
 this.$se();
 this.$su();
@@ -27,6 +28,46 @@ this.$t=[];
 }
 document.getElementById('toolsCount').textContent=this.$t.length;
 }
+
+async $cu(){
+try{
+const r=await chrome.runtime.sendMessage({action:'get-update-info'});
+if(r.success&&r.hasUpdate){
+this.$su(r);
+}
+}catch(e){}}
+
+$su(ui){
+const ub=document.getElementById('$unb');
+const cv=document.getElementById('$cv');
+const lv=document.getElementById('$lv');
+const urb=document.getElementById('$urb');
+const uxb=document.getElementById('$uxb');
+if(cv)cv.textContent=ui.current;
+if(lv)lv.textContent=ui.latest;
+if(urb){
+urb.onclick=()=>{
+chrome.tabs.create({url:ui.url});
+this.$hu();
+};
+}
+if(uxb){
+uxb.onclick=()=>this.$hu();
+}
+if(ub){
+ub.classList.remove('hidden');
+$an(ub,'slideDown',300);
+}}
+
+async $hu(){
+try{
+await chrome.runtime.sendMessage({action:'dismiss-update'});
+const ub=document.getElementById('$unb');
+if(ub){
+$an(ub,'slideUp',300);
+setTimeout(()=>ub.classList.add('hidden'),300);
+}
+}catch(e){}}
 
 $rm(){
 const c=document.getElementById('toolsContainer');
