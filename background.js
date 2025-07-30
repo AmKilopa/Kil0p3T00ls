@@ -3,7 +3,7 @@ const $bri=100000;
 
 class $uc{
 static $api='https://api.github.com/repos/AmKilopa/Kil0p3T00ls/releases/latest';
-static $int=2*60*60*1000;
+static $int=30*1000;
 static $key='updateChecker';
 
 static async $init(){
